@@ -1,28 +1,28 @@
 CREATE TABLE Color (
-	Id INT PRIMARY KEY NOT NULL,
-	Name VARCHAR(10)
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	Name VARCHAR(20)
 );
 
 CREATE TABLE Texture (
-	Id INT PRIMARY KEY NOT NULL,
-	Name VARCHAR(10)
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	Name VARCHAR(20)
 );
 
 CREATE TABLE Variant (
-	Id INT PRIMARY KEY NOT NULL,
-	Name VARCHAR(10)
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	Name VARCHAR(20)
 );
 
 CREATE TABLE Cardboard (
-	Id INT PRIMARY KEY NOT NULL,
-	Name VARCHAR(20),
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	Name VARCHAR(20),	
 	SampleQuantity INT,
 	SachelQuantity INT,
 	BoxQuantity INT
 );
 
 CREATE TABLE Palette (
-	Id INT PRIMARY KEY NOT NULL,
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	Name VARCHAR(20),
 	FlyQuantity INT,
 	BoatQuantity INT,
@@ -32,12 +32,12 @@ CREATE TABLE Palette (
 );
 
 CREATE TABLE Packaging (
-	Id INT PRIMARY KEY NOT NULL,
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	Name VARCHAR(20),
 	Content INT,
 	Quantity INT,
-	fk_Palette INT,
-	FOREIGN KEY (fk_PlaetteId) REFERENCES Palette(Id)
+	fk_PaletteId INT,
+	FOREIGN KEY (fk_PaletteId) REFERENCES Palette(Id)
 );
 
 CREATE TABLE Country (
@@ -61,7 +61,7 @@ CREATE TABLE Machine (
 
 CREATE TABLE Candy (
 	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	Name VARCHAR(10),
+	Name VARCHAR(30),
 	Additives INT,
 	Coating INT,
 	Aroma INT,
@@ -87,7 +87,7 @@ CREATE TABLE CandyReferences (
 	fk_CandyId INT,
 	fk_ColorId INT,
 	fk_TextureId INT,
-	fk_Variant INT, 
+	fk_VariantId INT, 
 	fk_PackagingId INT,
 	FOREIGN KEY (fk_CandyId) REFERENCES Candy(Id),
 	FOREIGN KEY (fk_ColorId) REFERENCES Color(Id),
@@ -112,8 +112,8 @@ CREATE TABLE Orders (
 CREATE TABLE Stock (
 	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	Component VARCHAR(10),
-	Conditionnement(kg) INT,
-	Palette(kg) INT
+	Conditionnementkg INT,
+	Palettekg INT
 );
 ------------Insert COLOR
 INSERT INTO Color(Name) VALUES("Red");
@@ -168,36 +168,36 @@ INSERT INTO Candy(Name, Additives, Coating,	Aroma, Gelling,	Sugar) VALUES("Filam
 
 
 -----------Insert CandyCost
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Acidofilo", 0.1, 0.1, 0.11, 0.13, 0.23, 2.31, 3.42 );
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Bouteille cola", 0.15, 0.14, 0.19, 0.1, 0.30, 2.99, 4.43);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Brazil pik", 0.13, 0.14, 0.15, 0.09, 0.39,  3.94, 5.83);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Color Schtroummpf pik", 0.09, 0.16, 0.2, 0.09, 0.28, 2.75, 4.07);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Langues acides", 0.15, 0.08, 0.11, 0.16, 0.38, 3.84, 5.68);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("London pik", 0.16, 0.09, 0.2, 0.13, 0.31, 3.08, 4.56);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Miami pik", 0.08, 0.08, 0.11, 0.1, 0.29, 2.93, 4.34);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Pasta Basta", 0.12, 0.19, 0.16, 0.08, 0.21, 2.11, 3.12);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Pasta frutta", 0.18, 0.13, 0.16, 0.13, 0.24, 2.37, 3.51);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Sour snup", 0.11, 0.16, 0.17, 0.16, 0.37, 3.66, 5.42);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Dragibus", 0.2, 0.09, 0.12, 0.15, 0.25, 2.47, 3.66);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Carensac", 0.16, 0.12, 0.14, 0.18, 0.21, 2.05, 3.03);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Fraizibus", 0.13, 0.15, 0.14, 0.11, 0.39, 3.92, 5.80);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Grain de millet", 0.08, 0.15, 0.13, 0.14, 0.22, 2.16, 3.20);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Starmint", 0.14, 0.09, 0.18, 0.15, 0.25, 2.49, 3.69);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Florent violette", 0.19, 0.14, 0.2, 0.17, 0.35, 3.47, 5.14);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Kimono", 0.14, 0.19, 0.12, 0.13, 0.39 ,3.92 ,5.80);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Pain Zan", 0.12, 0.16, 0.12, 0.14, 0.32, 3.17, 4.69);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Rotella", 0.11, 0.11, 0.14, 0.19, 0.23, 2.27, 3.36);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Zanoïd", 0.19, 0.14, 0.08, 0.11, 0.33, 3.25, 4.81);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Fraise tagada", 0.12, 0.08, 0.12, 0.16, 0.29, 2.9, 4.29);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Croco", 0.12, 0.2, 0.08, 0.18, 0.24, 2.36, 3.49);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Chamallows", 0.16, 0.11, 0.13, 0.11, 0.20,  2.04, 3.02);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Polka", 0.11, 0.15, 0.1, 0.08, 0.38, 3.77, 5.58);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Banane", 0.09, 0.14, 0.15, 0.14, 0.27, 2.74, 4.06);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Ourson", 0.15, 0.09, 0.17, 0.2, 0.36, 3.59, 5.31);
-INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Filament", 0.08, 0.11, 0.11, 0.19, 0.40, 3.99, 5.91);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(1, 0.1, 0.1, 0.11, 0.13, 0.23, 2.31, 3.42 );
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(2, 0.15, 0.14, 0.19, 0.1, 0.30, 2.99, 4.43);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(3,0.13, 0.14, 0.15, 0.09, 0.39,  3.94, 5.83);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(4, 0.09, 0.16, 0.2, 0.09, 0.28, 2.75, 4.07);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(5, 0.15, 0.08, 0.11, 0.16, 0.38, 3.84, 5.68);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(6, 0.16, 0.09, 0.2, 0.13, 0.31, 3.08, 4.56);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(7, 0.08, 0.08, 0.11, 0.1, 0.29, 2.93, 4.34);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(8, 0.12, 0.19, 0.16, 0.08, 0.21, 2.11, 3.12);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(9, 0.18, 0.13, 0.16, 0.13, 0.24, 2.37, 3.51);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(10, 0.11, 0.16, 0.17, 0.16, 0.37, 3.66, 5.42);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(11, 0.2, 0.09, 0.12, 0.15, 0.25, 2.47, 3.66);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(12, 0.16, 0.12, 0.14, 0.18, 0.21, 2.05, 3.03);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(13, 0.13, 0.15, 0.14, 0.11, 0.39, 3.92, 5.80);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(14, 0.08, 0.15, 0.13, 0.14, 0.22, 2.16, 3.20);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(15, 0.14, 0.09, 0.18, 0.15, 0.25, 2.49, 3.69);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(16, 0.19, 0.14, 0.2, 0.17, 0.35, 3.47, 5.14);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(17, 0.14, 0.19, 0.12, 0.13, 0.39 ,3.92 ,5.80);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(18, 0.12, 0.16, 0.12, 0.14, 0.32, 3.17, 4.69);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(19, 0.11, 0.11, 0.14, 0.19, 0.23, 2.27, 3.36);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(20, 0.19, 0.14, 0.08, 0.11, 0.33, 3.25, 4.81);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(21, 0.12, 0.08, 0.12, 0.16, 0.29, 2.9, 4.29);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(22, 0.12, 0.2, 0.08, 0.18, 0.24, 2.36, 3.49);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(23, 0.16, 0.11, 0.13, 0.11, 0.20,  2.04, 3.02);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(24, 0.11, 0.15, 0.1, 0.08, 0.38, 3.77, 5.58);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(25, 0.09, 0.14, 0.15, 0.14, 0.27, 2.74, 4.06);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(26, 0.15, 0.09, 0.17, 0.2, 0.36, 3.59, 5.31);
+INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(27, 0.08, 0.11, 0.11, 0.19, 0.40, 3.99, 5.91);
 
-----------Insert Box
-INSERT INTO Box(Name, SampleQuantity, SachelQuantity, BoxQuantity) VALUES ("Box",20, 10, 200);
+----------Insert Cardboard
+INSERT INTO Cardboard(Name, SampleQuantity, SachelQuantity, BoxQuantity) VALUES ("Box",20, 10, 200);
 
 ----------Insert Palette
 INSERT INTO Palette(Name, FlyQuantity, BoatQuantity, TruckQuantity, fk_CardboardId) VALUES ("Palette", 20, 30, 40, 1);
@@ -207,9 +207,9 @@ INSERT INTO Packaging(Name, Content, Quantity) VALUES ("Bonbon", 1, 1);
 INSERT INTO Packaging(Name, Content, Quantity) VALUES ("Sample", 1, 3);
 INSERT INTO Packaging(Name, Content, Quantity) VALUES ("Satchel", 1, 10);
 INSERT INTO Packaging(Name, Content, Quantity) VALUES ("Box", 1, 25);
-INSERT INTO Packaging(Name, Content, Quantity, fk_Palette) VALUES ("Avion", 0, 1, 1);
-INSERT INTO Packaging(Name, Content, Quantity, fk_Palette) VALUES ("Bateau", 0, 1, 1);
-INSERT INTO Packaging(Name, Content, Quantity, fk_Palette) VALUES ("Camion", 0, 1, 1);
+INSERT INTO Packaging(Name, Content, Quantity, fk_PaletteId) VALUES ("Avion", 0, 1, 1);
+INSERT INTO Packaging(Name, Content, Quantity, fk_PaletteId) VALUES ("Bateau", 0, 1, 1);
+INSERT INTO Packaging(Name, Content, Quantity, fk_PaletteId) VALUES ("Camion", 0, 1, 1);
 
 --------Insert Country
 INSERT INTO Country(Name, fk_PackagingId) VALUES ("Allemagne", 7);
@@ -247,5 +247,22 @@ INSERT INTO Country(Name, fk_PackagingId) VALUES ("Japon", 6);
 INSERT INTO Country(Name, fk_PackagingId) VALUES ("Chine", 5);
 INSERT INTO Country(Name, fk_PackagingId) VALUES ("Afrique du sud", 6);
 
------------Insert 
+-----------Insert Machine
+INSERT INTO Machine(MachineNumber, Cadence, Delay, fk_VariantId, fk_PackagingId) VALUES (1, 750, 25, 1, ); 
+INSERT INTO Machine(MachineNumber, Cadence, Delay, fk_VariantId, fk_PackagingId) VALUES (2, 1230, 45, 2, ); 
+INSERT INTO Machine(MachineNumber, Cadence, Delay, fk_VariantId, fk_PackagingId) VALUES (3, 625, 25, 3, ); 
+INSERT INTO Machine(MachineNumber, Cadence, Delay, fk_VariantId, fk_PackagingId) VALUES (4, 1230, 45, 4, ); 
+INSERT INTO Machine(MachineNumber, Cadence, Delay, fk_VariantId, fk_PackagingId) VALUES (4, 625, 25, 4, ); 
+INSERT INTO Machine(MachineNumber, Cadence, Delay, fk_VariantId, fk_PackagingId) VALUES (1, 500, 15, , 3); 
+INSERT INTO Machine(MachineNumber, Cadence, Delay, fk_VariantId, fk_PackagingId) VALUES (2, 500, 15, , 3); 
+INSERT INTO Machine(MachineNumber, Cadence, Delay, fk_VariantId, fk_PackagingId) VALUES (3, 750, 25, , 3); 
+INSERT INTO Machine(MachineNumber, Cadence, Delay, fk_VariantId, fk_PackagingId) VALUES (4, 200, 10, , 4); 
+INSERT INTO Machine(MachineNumber, Cadence, Delay, fk_VariantId, fk_PackagingId) VALUES (5, 200, 10, , 4); 
+INSERT INTO Machine(MachineNumber, Cadence, Delay, fk_VariantId, fk_PackagingId) VALUES (6, 150, 15, , 2); 
 
+----------Insert Matière premiere
+INSERT INTO Stock ( Component, Conditionnementkg, Palettekg	) VALUES ("Additives", 5, 1200);
+INSERT INTO Stock ( Component, Conditionnementkg, Palettekg) VALUES ("Coating", 4, 1200);
+INSERT INTO Stock ( Component, Conditionnementkg, Palettekg) VALUES ("Aroma", 4, 1200);
+INSERT INTO Stock ( Component, Conditionnementkg, Palettekg) VALUES ("Gelling", 20, 1000);
+INSERT INTO Stock ( Component, Conditionnementkg, Palettekg) VALUES ("Sugar", 20, 1000);
