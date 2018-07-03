@@ -13,40 +13,54 @@ CREATE TABLE Variant (
 	Name VARCHAR(10)
 );
 
-CREATE TABLE Packaging (
+CREATE TABLE Cardboard (
 	Id INT PRIMARY KEY NOT NULL,
-	Name VARCHAR(10),
-	Content INT,
-	Quantity INT,
-	FOREIGN KEY (Id) REFERENCES Box(Id)
-);
-
-CREATE TABLE Box (
-	Id INT PRIMARY KEY NOT NULL,
-	Name VARCHAR(3),
-	SampleQuantity INT
+	Name VARCHAR(20),
+	SampleQuantity INT,
 	SachelQuantity INT,
 	BoxQuantity INT
 );
 
-CREATE TABLE Country (
+CREATE TABLE Palette (
 	Id INT PRIMARY KEY NOT NULL,
+	Name VARCHAR(20),
+	FlyQuantity INT,
+	BoatQuantity INT,
+	TruckQuantity INT,
+	fk_CardboardId INT,
+	FOREIGN KEY (fk_CardboardId) REFERENCES Cardboard(Id)
+);
+
+CREATE TABLE Packaging (
+	Id INT PRIMARY KEY NOT NULL,
+	Name VARCHAR(20),
+	Content INT,
+	Quantity INT,
+	fk_Palette INT,
+	FOREIGN KEY (fk_PlaetteId) REFERENCES Palette(Id)
+);
+
+CREATE TABLE Country (
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	Name VARCHAR(50),
-	FOREIGN KEY (Id) REFERENCES Packaging(Id)
+	fk_PackagingId INT,
+	FOREIGN KEY (fk_PackagingId) REFERENCES Packaging(Id)
 );
 
 
 CREATE TABLE Machine (
-	Id INT PRIMARY KEY NOT NULL,
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	MachineNumber INT,
 	Cadence INT,
 	Delay INT,
-	FOREIGN KEY (Id) REFERENCES Variant(Id),
-	FOREIGN KEY (Id) REFERENCES Packaging(Id)
+	fk_VariantId INT,
+	fk_PackagingId INT,
+	FOREIGN KEY (fk_VariantId) REFERENCES Variant(Id),
+	FOREIGN KEY (fk_PackagingId) REFERENCES Packaging(Id)
 );
 
 CREATE TABLE Candy (
-	Id INT PRIMARY KEY NOT NULL,
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	Name VARCHAR(10),
 	Additives INT,
 	Coating INT,
@@ -56,7 +70,7 @@ CREATE TABLE Candy (
 );
 
 CREATE TABLE CandyCost (
-	Id INT PRIMARY KEY NOT NULL,
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	ManufacturePercentage FLOAT,
 	ContioningPercentage FLOAT,
 	ShippingPercentage FLOAT,
@@ -64,35 +78,39 @@ CREATE TABLE CandyCost (
 	SampleCost FLOAT,
 	SatchelCost FLOAT,
 	BoxCost FLOAT,
-	FOREIGN KEY (Id) REFERENCES Candy(Id)
+	fk_CandyId INT,
+	FOREIGN KEY (fk_CandyId) REFERENCES Candy(Id)
+);
+
+CREATE TABLE CandyReferences (
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	fk_CandyId INT,
+	fk_ColorId INT,
+	fk_TextureId INT,
+	fk_Variant INT, 
+	fk_PackagingId INT,
+	FOREIGN KEY (fk_CandyId) REFERENCES Candy(Id),
+	FOREIGN KEY (fk_ColorId) REFERENCES Color(Id),
+	FOREIGN KEY (fk_TextureId) REFERENCES Texture(Id),
+	FOREIGN KEY (fk_VariantId) REFERENCES Variant(Id),
+	FOREIGN KEY (fk_PackagingId) REFERENCES Packaging(Id)
 );
 
 CREATE TABLE Orders (
-	Id INT PRIMARY KEY NOT NULL,
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	DateOrder DATE,
 	ClientName VARCHAR(50),
 	ClientSurname VARCHAR(50),
 	Quantity INT,
 	TotalCost FLOAT,
-	DateOrder DATE,
-	FOREIGN KEY (Id) REFERENCES Candy(Id),
-	FOREIGN KEY (Id) REFERENCES Color(Id),
-	FOREIGN KEY (Id) REFERENCES Texture(Id),
-	FOREIGN KEY (Id) REFERENCES Variant(Id),
-	FOREIGN KEY (Id) REFERENCES Packaging(Id),
-	FOREIGN KEY (Id) REFERENCES Country(Id)
-);
-
-CREATE TABLE CandyReferences (
-	Id INT PRIMARY KEY NOT NULL,
-	FOREIGN KEY (Id) REFERENCES Candy(Id),
-	FOREIGN KEY (Id) REFERENCES Color(Id),
-	FOREIGN KEY (Id) REFERENCES Texture(Id),
-	FOREIGN KEY (Id) REFERENCES Variant(Id),
-	FOREIGN KEY (Id) REFERENCES Packaging(Id)
+	fk_CandyReferencesId INT,
+	fk_CountryId INT,
+	FOREIGN KEY (fk_CandyReferencesId) REFERENCES CandyReferences(Id),
+	FOREIGN KEY (fk_CountryId) REFERENCES Country(Id)
 );
 
 CREATE TABLE Stock (
-	Id INT PRIMARY KEY NOT NULL,
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	Component VARCHAR(10),
 	Conditionnement(kg) INT,
 	Palette(kg) INT
@@ -179,4 +197,55 @@ INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPerce
 INSERT INTO CandyCost(ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES("Filament", 0.08, 0.11, 0.11, 0.19, 0.40, 3.99, 5.91);
 
 ----------Insert Box
-INSERT INTO Box(Name, SampleQuantity, SachelQuantity, BoxQuantity) VALUES ("Box"
+INSERT INTO Box(Name, SampleQuantity, SachelQuantity, BoxQuantity) VALUES ("Box",20, 10, 200);
+
+----------Insert Palette
+INSERT INTO Palette(Name, FlyQuantity, BoatQuantity, TruckQuantity, fk_CardboardId) VALUES ("Palette", 20, 30, 40, 1);
+
+----------Insert Packaging
+INSERT INTO Packaging(Name, Content, Quantity) VALUES ("Bonbon", 1, 1);
+INSERT INTO Packaging(Name, Content, Quantity) VALUES ("Sample", 1, 3);
+INSERT INTO Packaging(Name, Content, Quantity) VALUES ("Satchel", 1, 10);
+INSERT INTO Packaging(Name, Content, Quantity) VALUES ("Box", 1, 25);
+INSERT INTO Packaging(Name, Content, Quantity, fk_Palette) VALUES ("Avion", 0, 1, 1);
+INSERT INTO Packaging(Name, Content, Quantity, fk_Palette) VALUES ("Bateau", 0, 1, 1);
+INSERT INTO Packaging(Name, Content, Quantity, fk_Palette) VALUES ("Camion", 0, 1, 1);
+
+--------Insert Country
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Allemagne", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Autriche", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Belgique", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Bulgarie", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Chypre", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Croatie", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Danemark", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Espagne", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Estonie", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Finlande", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("France", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Grèce", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Hongrie", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Irelande", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Italie", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Lettonie", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Lituanie", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Luxembourg", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Malte", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Pays-Bas", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Pologne", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Portugal", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("République tchèque", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Roumanie", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Royaume-Uni", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Slovaquie", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Slovénie", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Suède", 7);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("USA", 5);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Canada", 5);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Mexique", 5);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Japon", 6);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Chine", 5);
+INSERT INTO Country(Name, fk_PackagingId) VALUES ("Afrique du sud", 6);
+
+-----------Insert 
+
