@@ -14,7 +14,7 @@ def connectToOracle():
     return connection.cursor()
 
 
-def disconnectFromOracle():
+def disconnectFromOracle(connection):
     connection.commit()
     connection.close()
 
