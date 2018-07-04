@@ -109,7 +109,7 @@ CREATE TABLE Orders (
   trackingNumber INT,
 	fk_candyReference_id INT,
 	fk_country_id INT,
-	FOREIGN KEY (fk_candyReferences_id) REFERENCES CandyReferences(candyReferences_id),
+	FOREIGN KEY (fk_candyReference_id) REFERENCES CandyReferences(candyReference_id),
 	FOREIGN KEY (fk_country_id) REFERENCES Country(country_id)
 );
 
