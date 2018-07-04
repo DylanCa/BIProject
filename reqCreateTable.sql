@@ -84,6 +84,7 @@ CREATE TABLE CandyCost (
 
 CREATE TABLE CandyReferences (
 	candyReferences_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	candyStock INT NOT NULL,
 	fk_candy_id INT,
 	fk_color_id INT,
 	fk_texture_id INT,
