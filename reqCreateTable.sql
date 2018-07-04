@@ -17,7 +17,7 @@ CREATE TABLE Cardboard (
 	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	Name VARCHAR(20),	
 	SampleQuantity INT,
-	SachelQuantity INT,
+	BagQuantity INT,
 	BoxQuantity INT
 );
 
@@ -197,7 +197,7 @@ INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, S
 INSERT INTO CandyCost(fk_CandyId, ManufacturePercentage, ContioningPercentage, ShippingPercentage, GeneralPercentage, SampleCost, SatchelCost, BoxCost) VALUES(27, 0.08, 0.11, 0.11, 0.19, 0.40, 3.99, 5.91);
 
 ----------Insert Cardboard
-INSERT INTO Cardboard(Name, SampleQuantity, SachelQuantity, BoxQuantity) VALUES ("Box",20, 10, 200);
+INSERT INTO Cardboard(Name, SampleQuantity, BagQuantity, BoxQuantity) VALUES ("Box",20, 10, 200);
 
 ----------Insert Palette
 INSERT INTO Palette(Name, FlyQuantity, BoatQuantity, TruckQuantity, fk_CardboardId) VALUES ("Palette", 20, 30, 40, 1);
