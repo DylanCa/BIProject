@@ -105,6 +105,8 @@ CREATE TABLE Orders (
   clientMail VARCHAR(50),
 	quantity INT,
 	totalCost FLOAT,
+  orderState VARCHAR(20),
+  trackingNumber INT,
 	fk_candyReference_id INT,
 	fk_country_id INT,
 	FOREIGN KEY (fk_candyReferences_id) REFERENCES CandyReferences(candyReferences_id),
