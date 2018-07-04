@@ -43,15 +43,17 @@ BI Project for school - Exia.CESi
 
 ### MERISE METHOD
 
-Data Dictionnary
+* Data Dictionnary
+![ddpart1](https://user-images.githubusercontent.com/19567048/42287232-e537a76c-7fb5-11e8-8d84-cd450bb069ec.png)
+![ddpart2](https://user-images.githubusercontent.com/19567048/42287235-e710e45e-7fb5-11e8-9ce4-7be0d647c6cb.png)
 
-MCD
+* MCD
 ![mcd](https://user-images.githubusercontent.com/19567048/42284590-4cd20470-7fad-11e8-95ca-cd4ace1c9672.png)
 
-MLD
+* MLD
 ![mld](https://user-images.githubusercontent.com/19567048/42284624-629c6570-7fad-11e8-9caa-79fd93993197.png)
 
-MPD -> annexes
+* MPD -> annexes
 
 ### DIAGRAMME UML 
 
