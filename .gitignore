@@ -2,3 +2,5 @@
 *.pyc
 
 \.vscode/
+
+local_config\.py
