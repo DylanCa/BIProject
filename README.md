@@ -23,10 +23,13 @@ BI Project for school - Exia.CESi
 ## SCHEDULE
 
 ### OBS (Organisational breakdown structure)
+![obs](https://user-images.githubusercontent.com/19567048/42286678-146dcc7a-7fb4-11e8-9e13-5ace9de2187a.png)
 
 ### PBS (Product breakdown structure)
+![pbs](https://user-images.githubusercontent.com/19567048/42286684-1cfb2bee-7fb4-11e8-837f-1f2962fda3a4.png)
 
 ### WBS (Work breakdown structure)
+![wbs](https://user-images.githubusercontent.com/19567048/42286692-28d90378-7fb4-11e8-857a-6e70d8342799.png)
 
 ### PERT 
 
