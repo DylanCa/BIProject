@@ -51,7 +51,7 @@ def getCandiesList():
     return results
 
 
-def getCandyCost(candyName=""):
+def getCandyCostByName(candyName=""):
 
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
