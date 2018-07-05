@@ -2,7 +2,8 @@ from data.connection import oracle
 
 
 def getTextureByID(textureID=0):
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
 
     cursor.execute(
         """
@@ -10,23 +11,35 @@ def getTextureByID(textureID=0):
      FROM TEXTURE t
      WHERE (t.TEXTURE_ID = :TEXTURE_ID)""", {"TEXTURE_ID": textureID})
 
-    for VARIANTNAME in cursor:
-        print(VARIANTNAME)
-
+    result = cursor.fetchall()
     cursor.close()
-    return
+    return result
+
+
+def getTextureByName(textureName=""):
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
+
+    cursor.execute(
+        """
+     SELECT t.TEXTURE_ID, t.TEXTURENAME
+     FROM TEXTURE t
+     WHERE (t.TEXTURENAME = :TEXTURENAME)""", {"TEXTURENAME": textureName})
+
+    result = cursor.fetchall()
+    cursor.close()
+    return result
 
 
 def getTexturesList():
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
 
     cursor.execute("""
      SELECT t.TEXTURENAME
      FROM TEXTURE t
     """)
 
-    for VARIANTNAME in cursor:
-        print(VARIANTNAME)
-
+    result = cursor.fetchall()
     cursor.close()
-    return
+    return result
