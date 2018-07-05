@@ -37,7 +37,7 @@ def getStockByComponent(component="UNKNOWN"):
     return result
 
 
-def getStockList():
+def getStocksList():
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
