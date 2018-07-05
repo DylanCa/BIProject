@@ -1,0 +1,32 @@
+CREATE USER generator IDENTIFIED BY password1
+DEFAULT TABLESPACE data
+TEMPORARY TABLESPACE temp
+QUOTA 1000Mo ON data
+PROFIL profil_generator; 
+
+
+GRANT CREATE SESSION TO generator 
+
+
+CREATE ROLE role_generator;
+
+GRANT SELECT ANY TABLE
+GRANT UPDATE ON Orders TO role_generator;
+GRANT UPDATE ON CandyReferences TO role_generator;
+GRANT UPDATE ON Stock TO role_generator;
+
+GRANT role_generator TO generator;
+
+
+
+
+CREATE USER talend IDENTIFIED BY password2
+DEFAULT TABLESPACE data
+TEMPORARY TABLESPACE temp
+QUOTA 1000Mo ON data
+PROFIL profil_talend; 
+
+
+CREATE ROLE role_talend;
+GRANT SELECT ANY TABLE
+GRANT role_talend TO talend;
