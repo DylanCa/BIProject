@@ -17,7 +17,3 @@ def connectToOracle():
 def disconnectFromOracle(connection):
     connection.commit()
     connection.close()
-
-
-def getAmountOrdered():
-    return random.randint(1, 100)
