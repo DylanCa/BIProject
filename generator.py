@@ -2,16 +2,16 @@ import data.oracle as oracle
 import data.mongo as mongo
 import data.reference as reference
 
+import random
+from time import gmtime, strftime
+
+
+def generateRandomOrders(clientName="UNKNOWN",
+                         clientSurname="UNKNOWN",
+                         nbOrder=0):
+    pass
+    
+
 
 def generateOrderPool(nbOrders=0):
-    pool = list()
-
-    for x in range(nbOrders):
-        pool.append("Order #{} - Candy: {}, Amount Ordered: {}, Conditionning: {}".
-            format(x + 1, oracle.getRandomCountry(), oracle.getRandomCandy(),
-                   oracle.getAmountOrdered(), oracle.getRandomConditionning()))
-    
-    mongo.saveOrderPool(pool)
-
-
-
+    pass
