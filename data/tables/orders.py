@@ -1,8 +1,11 @@
 from data.connection import oracle
 
+import time
+
 
 def getOrderByID(orderID=0):
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
 
     cursor.execute(
         """
@@ -20,17 +23,14 @@ def getOrderByID(orderID=0):
      LEFT JOIN COUNTRY c ON (c.COUNTRY_ID = o.FK_COUNTRY_ID )
      WHERE (o.ORDER_ID = :ORDER_ID)""", {"ORDER_ID": orderID})
 
-    for ORDERDATE, CLIENTNAME, CLIENTSURNAME, CLIENTMAIL, FK_CANDYREFERENCE_ID, QUANTITY, TOTALCOST, ORDERSTATE, COUNTRY, TRACKINGNUMBER in cursor:
-        print(ORDERDATE, CLIENTNAME, CLIENTSURNAME, CLIENTMAIL,
-              FK_CANDYREFERENCE_ID, QUANTITY, TOTALCOST, ORDERSTATE, COUNTRY,
-              TRACKINGNUMBER)
-
+    result = cursor.fetchall()
     cursor.close()
-    return
+    return result
 
 
 def getOrderByReferenceID(referenceID=0):
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
 
     cursor.execute(
         """
@@ -49,17 +49,14 @@ def getOrderByReferenceID(referenceID=0):
      WHERE (o.FK_CANDYREFERENCE_ID = :FK_CANDYREFERENCE_ID)""",
         {"FK_CANDYREFERENCE_ID": referenceID})
 
-    for ORDERDATE, CLIENTNAME, CLIENTSURNAME, CLIENTMAIL, FK_CANDYREFERENCE_ID, QUANTITY, TOTALCOST, ORDERSTATE, COUNTRY, TRACKINGNUMBER in cursor:
-        print(ORDERDATE, CLIENTNAME, CLIENTSURNAME, CLIENTMAIL,
-              FK_CANDYREFERENCE_ID, QUANTITY, TOTALCOST, ORDERSTATE, COUNTRY,
-              TRACKINGNUMBER)
-
+    result = cursor.fetchall()
     cursor.close()
-    return
+    return result
 
 
 def getOrdersList():
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
 
     cursor.execute("""
      SELECT o.ORDERDATE,
@@ -76,13 +73,9 @@ def getOrdersList():
      LEFT JOIN COUNTRY c ON (c.COUNTRY_ID = o.FK_COUNTRY_ID )
      """)
 
-    for ORDERDATE, CLIENTNAME, CLIENTSURNAME, CLIENTMAIL, FK_CANDYREFERENCE_ID, QUANTITY, TOTALCOST, ORDERSTATE, COUNTRY, TRACKINGNUMBER in cursor:
-        print(ORDERDATE, CLIENTNAME, CLIENTSURNAME, CLIENTMAIL,
-              FK_CANDYREFERENCE_ID, QUANTITY, TOTALCOST, ORDERSTATE, COUNTRY,
-              TRACKINGNUMBER)
-
+    result = cursor.fetchall()
     cursor.close()
-    return
+    return result
 
 
 def createOrder(clientName="UNKNOWN",
@@ -92,12 +85,31 @@ def createOrder(clientName="UNKNOWN",
                 totalCost=0,
                 orderState="UNKNOWN",
                 trackingNumber=0000,
-                country="UNKNOWN",
+                countryID=0,
                 candyReference=0):
 
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
+    print(clientName, clientSurname, clientMail, quantity, totalCost,
+          orderState, trackingNumber, countryID, candyReference)
+          
+    cursor.execute(
+        """
+        INSERT INTO ORDERS(ORDERDATE, CLIENTNAME, CLIENTSURNAME, CLIENTMAIL, QUANTITY, TOTALCOST, ORDERSTATE, TRACKINGNUMBER, FK_COUNTRY_ID, FK_CANDYREFERENCE_ID)
+        VALUES(TO_TIMESTAMP(:ORDERDATE, 'DD/MM/YYYY hh24:mi:ss'), :CLIENTNAME, :CLIENTSURNAME, :CLIENTMAIL, :QUANTITY, :TOTALCOST, :ORDERSTATE, :TRACKINGNUMBER, :FK_COUNTRY_ID, :FK_CANDYREFERENCE_ID)""",
+        {
+            "ORDERDATE": time.strftime('%d-%m-%Y %H:%M:%S'),
+            "CLIENTNAME": clientName,
+            "CLIENTSURNAME": clientSurname,
+            "CLIENTMAIL": clientMail,
+            "QUANTITY": quantity,
+            "TOTALCOST": totalCost,
+            "ORDERSTATE": orderState,
+            "TRACKINGNUMBER": trackingNumber,
+            "FK_COUNTRY_ID": countryID,
+            "FK_CANDYREFERENCE_ID": candyReference
+        })
 
-    # Add to Oracle
-
+    connection.commit()
     cursor.close()
-    return
+    return True
