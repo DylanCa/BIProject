@@ -3,27 +3,25 @@ from data.connection import oracle
 
 def getCountryByName(countryname=""):
 
-    cursor = oracle.connectToOracle()
-
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
 
     cursor.execute(
         """
-     SELECT c.COUNTRYNAME, p.PACKAGINGNAME
+     SELECT c.COUNTRY_ID, c.COUNTRYNAME, p.PACKAGINGNAME
      FROM COUNTRY c
      LEFT JOIN PACKAGING p ON (c.FK_PACKAGING_ID = p.PACKAGING_ID )
      WHERE (c.COUNTRYNAME = :COUNTRYNAME)""", {"COUNTRYNAME": countryname})
 
-    for COUNTRYNAME, PACKAGINGNAME in cursor:
-        print(COUNTRYNAME, PACKAGINGNAME)
-
+    result = cursor.fetchall()
     cursor.close()
-    return
+    return result
 
 
 def getCountryByID(countryID=0):
 
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
 
     cursor.execute(
         """
@@ -32,16 +30,15 @@ def getCountryByID(countryID=0):
      LEFT JOIN PACKAGING p ON (c.FK_PACKAGING_ID = p.PACKAGING_ID )
      WHERE (c.COUNTRY_ID = :COUNTRY_ID)""", {"COUNTRY_ID": countryID})
 
-    for COUNTRYNAME, PACKAGINGNAME in cursor:
-        print(COUNTRYNAME, PACKAGINGNAME)
-
+    result = cursor.fetchall()
     cursor.close()
-    return
+    return result
 
 
 def getCountriesList():
 
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
 
     cursor.execute("""
      SELECT c.COUNTRYNAME, p.PACKAGINGNAME
@@ -49,8 +46,6 @@ def getCountriesList():
      LEFT JOIN PACKAGING p ON (c.FK_PACKAGING_ID = p.PACKAGING_ID )
      """)
 
-    for COUNTRYNAME, PACKAGINGNAME in cursor:
-        print(COUNTRYNAME, PACKAGINGNAME)
-
+    result = cursor.fetchall()
     cursor.close()
-    return
+    return result

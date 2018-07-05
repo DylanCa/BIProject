@@ -2,7 +2,8 @@ from data.connection import oracle
 
 
 def getMachineByID(machineID=0):
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
 
     cursor.execute(
         """
@@ -17,15 +18,14 @@ def getMachineByID(machineID=0):
 
      WHERE (m.MACHINE_ID = :MACHINE_ID)""", {"MACHINE_ID": machineID})
 
-    for MACHINENUMBER, CADENCE, MACHINEDELAY, VARIANTNAME, PACKAGINGNAME in cursor:
-        print(MACHINENUMBER, CADENCE, MACHINEDELAY, VARIANTNAME, PACKAGINGNAME)
-
+    result = cursor.fetchall()
     cursor.close()
-    return
+    return result
 
 
 def getMachineByVariantID(machineVariantID=0):
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
 
     cursor.execute(
         """
@@ -40,15 +40,14 @@ def getMachineByVariantID(machineVariantID=0):
 
      WHERE (v.VARIANT_ID = :VARIANT_ID)""", {"VARIANT_ID": machineVariantID})
 
-    for MACHINENUMBER, CADENCE, MACHINEDELAY, VARIANTNAME, PACKAGINGNAME in cursor:
-        print(MACHINENUMBER, CADENCE, MACHINEDELAY, VARIANTNAME, PACKAGINGNAME)
-
+    result = cursor.fetchall()
     cursor.close()
-    return
+    return result
 
 
 def getMachineByPackagingID(machinePackagingID=0):
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
 
     cursor.execute(
         """
@@ -64,15 +63,14 @@ def getMachineByPackagingID(machinePackagingID=0):
      WHERE (p.PACKAGING_ID = :PACKAGING_ID)""",
         {"PACKAGING_ID": machinePackagingID})
 
-    for MACHINENUMBER, CADENCE, MACHINEDELAY, VARIANTNAME, PACKAGINGNAME in cursor:
-        print(MACHINENUMBER, CADENCE, MACHINEDELAY, VARIANTNAME, PACKAGINGNAME)
-
+    result = cursor.fetchall()
     cursor.close()
-    return
+    return result
 
 
 def getMachinesList():
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
 
     cursor.execute("""
      SELECT m.MACHINENUMBER,
@@ -85,8 +83,6 @@ def getMachinesList():
      LEFT JOIN PACKAGING p ON (p.PACKAGING_ID = m.FK_PACKAGING_ID)
     """)
 
-    for MACHINENUMBER, CADENCE, MACHINEDELAY, VARIANTNAME, PACKAGINGNAME in cursor:
-        print(MACHINENUMBER, CADENCE, MACHINEDELAY, VARIANTNAME, PACKAGINGNAME)
-
+    result = cursor.fetchall()
     cursor.close()
-    return
+    return result

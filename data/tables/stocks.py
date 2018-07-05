@@ -2,7 +2,8 @@ from data.connection import oracle
 
 
 def getStockByID(stockID=0):
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
 
     cursor.execute(
         """
@@ -20,7 +21,8 @@ def getStockByID(stockID=0):
 
 
 def getStockByComponent(component="UNKNOWN"):
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
 
     cursor.execute(
         """
@@ -30,15 +32,14 @@ def getStockByComponent(component="UNKNOWN"):
      FROM STOCK s
      WHERE (s.COMPONENT = :COMPONENT)""", {"COMPONENT": component})
 
-    for COMPONENT, CONDITIONNEMENTKG, PALETTEKG in cursor:
-        print(COMPONENT, CONDITIONNEMENTKG, PALETTEKG)
-
+    result = cursor.fetchall()
     cursor.close()
-    return
+    return result
 
 
 def getStockList():
-    cursor = oracle.connectToOracle()
+    connection = oracle.connectToOracle()
+    cursor = connection.cursor()
 
     cursor.execute("""
      SELECT s.COMPONENT,
@@ -47,8 +48,6 @@ def getStockList():
      FROM STOCK s
     """)
 
-    for COMPONENT, CONDITIONNEMENTKG, PALETTEKG in cursor:
-        print(COMPONENT, CONDITIONNEMENTKG, PALETTEKG)
-
+    result = cursor.fetchall()
     cursor.close()
-    return
+    return result
