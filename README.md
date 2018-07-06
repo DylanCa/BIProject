@@ -6,11 +6,12 @@ This Database / Business Intelligence project, called "Le Palais du Bonbon", aim
 ## Built With
 
 * [Python](https://www.python.org/) - Programming Language.
-* [JMerise](http://www.jfreesoft.com/JMerise/) - To Build Data-related docs.
 * [Oracle](https://www.oracle.com/database/technologies/index.html) - Multi-model database management system.
+* [MongoDB](https://www.mongodb.com/) - Free and open-source cross-platform document-oriented database program.
 * [Talend](https://www.talend.com/) - A Cloud Data Integration Leader (modern ETL).
-
+* [JMerise](http://www.jfreesoft.com/JMerise/) - To Build Data-related docs.
 * [Microsoft Project](https://products.office.com/en/project/project-and-portfolio-management-software) - Project management software.
+* [Cloud9Charts](https://www.knowi.com/) - NoSQL and SQL Reporting and Analytics.
 
 ## Versioning
 
@@ -27,6 +28,3 @@ BIProject > Project Management > Dossier Réalisation de Projet > Rapport de Pro
 * **[Anais B](https://github.com/BAnais)**
 * **[Cédric M](https://github.com/Cedric-M)**
 
-## License
-
-This project is licensed under the MIT License.
