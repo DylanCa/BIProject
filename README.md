@@ -17,10 +17,10 @@ We use [GitHub](https://github.com/) for versioning. For the various branches av
 
 ## Authors
 
-* **Dylan C** - [GitHub Link](https://github.com/DylanCa) *Project Manager*
-* **Anthony L** - [GitHub Link](https://github.com/AnthonyLuque)
-* **Anais B** - [GitHub Link](https://github.com/BAnais)
-* **Cédric M** - [GitHub Link](https://github.com/Cedric-M)
+* **[Dylan C](https://github.com/DylanCa)** - *Project Manager*
+* **[Anthony L](https://github.com/AnthonyLuque)**
+* **[Anais B](https://github.com/BAnais)**
+* **[Cédric M](https://github.com/Cedric-M)**
 
 ## License
 
