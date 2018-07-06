@@ -1,4 +1,4 @@
-from data.tables import candies, packaging, countries, orders, colors, textures, variants
+from data.tables import candies, packaging, countries, orders, colors, textures, variants, stocks
 from data.client_infos import client_names, client_surnames
 
 import random
@@ -75,5 +75,7 @@ def generateOrder(clientName="UNKNOWN",
         orderState="PENDING",
         countryID=countryID,
         candyReference=candyReferenceID)
+
+    stocks.updateStockQuantityByCandyName(candyName)
 
     return True
