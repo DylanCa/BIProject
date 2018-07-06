@@ -61,23 +61,13 @@ def updateStockQuantityByCandyName(candyName="UNKNOWN"):
 
     results = candies.getCandyByName(candyName)[0]
 
-    quantities = []
-    quantities[0] = results[2]
-    quantities[1] = results[3]
-    quantities[2] = results[4]
-    quantities[3] = results[5]
-    quantities[4] = results[6]
+    quantities = [results[2], results[3], results[4], results[5], results[6]]
 
-    component = []
-    component[0] = 'additive'
-    component[1] = 'coating'
-    component[2] = 'aroma'
-    component[3] = 'gelling'
-    component[4] = 'sugar'
+    component = ['additive', 'coating', 'aroma', 'gelling', 'sugar']
 
     for x in range(0, len(component)):
         query = """UPDATE STOCK
-            SET PALETTEKG = ( SELECT PALETTEKG FROM STOCK WHERE COMPONENT = '{}') - {}
+            SET PALETTEG = ( SELECT PALETTEG FROM STOCK WHERE COMPONENT = '{}') - {}
             WHERE COMPONENT = '{}'""".format(component[x], quantities[x],
                                              component[x])
 
@@ -91,7 +81,7 @@ def updateStockQuantityByID(stockID=0, quantity=0):
     cursor = connection.cursor()
 
     query = """UPDATE STOCK
-        SET PALETTEKG = ( SELECT PALETTEKG FROM STOCK WHERE STOCK_ID = '{}') - {}
+        SET PALETTEG = ( SELECT PALETTEG FROM STOCK WHERE STOCK_ID = '{}') - {}
         WHERE STOCK_ID = '{}'""".format(stockID, quantity, stockID)
     cursor.execute(query)
 
