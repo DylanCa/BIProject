@@ -55,7 +55,7 @@ at the root of your project, and change its values.
 
 ## Versioning
 
-We use [GitHub](https://github.com/) for versioning. The different files are available in different branches, for now. They will be merged at the end of the available time.
+We use [GitHub](https://github.com/) for versioning. 
 If you want to get access to our final report, feel free to find it following the next path:
 ```
 BIProject > Project Management > Dossier Réalisation de Projet > Rapport de Projet Data BI.docx
@@ -67,9 +67,6 @@ BIProject > Project Management > Dossier Réalisation de Projet > Rapport de Pro
 * **[Anthony L](https://github.com/AnthonyLuque)**
 * **[Anais B](https://github.com/BAnais)**
 * **[Cédric M](https://github.com/Cedric-M)**
-=======
+
 # BIProject
 BI Project for school - Exia.CESi
-
-### WORK IN PROGRESS
-The different files are available in different branches, for now. They will be merged at the end of the available time.
