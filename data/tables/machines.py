@@ -1,7 +1,7 @@
 from data.connection import oracle
 
 
-def getMachineByID(machineID=0):
+def getMachineByID(machineID=0):  # Returns a Machine for a given machine ID as a parameter
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -23,7 +23,7 @@ def getMachineByID(machineID=0):
     return result
 
 
-def getMachineByVariantID(machineVariantID=0):
+def getMachineByVariantID(machineVariantID=0): # Returns a machine for a given variant ID as a parameter
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -45,7 +45,7 @@ def getMachineByVariantID(machineVariantID=0):
     return result
 
 
-def getMachineByPackagingID(machinePackagingID=0):
+def getMachineByPackagingID(machinePackagingID=0): # Returns a machine for a given packaging ID as a parameter
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -68,7 +68,7 @@ def getMachineByPackagingID(machinePackagingID=0):
     return result
 
 
-def getMachinesList():
+def getMachinesList(): # Returns the machine list
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 

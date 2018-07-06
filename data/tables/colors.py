@@ -1,7 +1,7 @@
 from data.connection import oracle
 
 
-def getColorByID(colorID=0):
+def getColorByID(colorID=0): # Returns a Color for a given color ID as a parameter
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -16,7 +16,7 @@ def getColorByID(colorID=0):
     return result
 
 
-def getColorByName(colorName=""):
+def getColorByName(colorName=""):  # Returns a Color for a given color Name as a parameter
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -31,7 +31,7 @@ def getColorByName(colorName=""):
     return result
 
 
-def getColorsList():
+def getColorsList(): # Returns the color list
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 

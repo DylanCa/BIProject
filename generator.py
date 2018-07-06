@@ -4,7 +4,7 @@ from data.client_infos import client_names, client_surnames
 import random
 
 
-def generateOrderPool(nbOrders=0):
+def generateOrderPool(nbOrders=0): # Generates a random number of Orders according to the parameter given
     for x in range(0, nbOrders):
         clientName = random.choice(client_names)
         clientSurname = random.choice(client_surnames)
@@ -39,7 +39,7 @@ def generateOrder(clientName="UNKNOWN",
                   colorName="UNKNOWN",
                   textureName="UNKNOWN",
                   variantName="UNKNOWN",
-                  packagingName="UNKNOWN"):
+                  packagingName="UNKNOWN"): # Generates an order according to the parameters given
 
     packagingID = packaging.getPackagingByName(packagingName)[0][0]
     countryID = countries.getCountryByName(countryName)[0][0]

@@ -1,7 +1,7 @@
 from data.connection import oracle
 
 
-def getCountryByName(countryname=""):
+def getCountryByName(countryname=""): # Returns a Country for a given country name as a parameter
 
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
@@ -18,7 +18,7 @@ def getCountryByName(countryname=""):
     return result
 
 
-def getCountryByID(countryID=0):
+def getCountryByID(countryID=0):  # Returns a Country for a given country ID as a parameter
 
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
@@ -35,7 +35,7 @@ def getCountryByID(countryID=0):
     return result
 
 
-def getCountriesList():
+def getCountriesList(): # Return the country list
 
     connection = oracle.connectToOracle()
     cursor = connection.cursor()

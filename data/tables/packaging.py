@@ -1,7 +1,7 @@
 from data.connection import oracle
 
 
-def getPackagingByName(packagingName=""):  # TODO: CORRECT IT
+def getPackagingByName(packagingName=""):  # Returns the packaging according to the packaging Name given as a parameter
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 

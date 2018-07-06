@@ -2,7 +2,7 @@ from data.connection import oracle
 from data.tables import colors, packaging, textures, variants
 
 
-def getCandyByName(candyName=""):
+def getCandyByName(candyName=""): # Returns a candy for a candy name given as a parameter
 
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
@@ -20,7 +20,7 @@ def getCandyByName(candyName=""):
     return result
 
 
-def getCandyByID(candyID=0):
+def getCandyByID(candyID=0): # Returns a candy for a candy ID given as a parameter
 
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
@@ -36,7 +36,7 @@ def getCandyByID(candyID=0):
     return result
 
 
-def getCandiesList():
+def getCandiesList(): # Returns the Candy List
 
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
@@ -51,7 +51,7 @@ def getCandiesList():
     return results
 
 
-def getCandyCostByName(candyName=""):
+def getCandyCostByName(candyName=""): # Returns a candy cost for a candy name given as a parameter
 
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
@@ -75,7 +75,7 @@ def getCandyCostByName(candyName=""):
     return result
 
 
-def getCandyCostByID(candyID=0):
+def getCandyCostByID(candyID=0): # Returns a candy cost for a candy ID given as a parameter
 
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
@@ -100,7 +100,7 @@ def getCandyCostByID(candyID=0):
     return result
 
 
-def getCandyCostsList():
+def getCandyCostsList(): # Returns a candy costs List
 
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
@@ -123,7 +123,7 @@ def getCandyCostsList():
     return results
 
 
-def getCandyReferenceByID(candyReferenceID=0):
+def getCandyReferenceByID(candyReferenceID=0): # Returns a candy reference if exists for a given reference ID
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -157,7 +157,7 @@ def getCandyReferenceByCompositionID(candyID=0,
                                      colorID=0,
                                      textureID=0,
                                      variantID=0,
-                                     packagingID=0):
+                                     packagingID=0):  # Returns a candy reference if exists for a given composition ID
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -201,7 +201,7 @@ def createCandyReferenceByID(candyID=0,
                              colorID=0,
                              textureID=0,
                              variantID=0,
-                             packagingID=0):
+                             packagingID=0): # Creates a Candy Reference for given composition IDs
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -231,7 +231,7 @@ def createCandyReferenceByName(candyName="UNKNOWN",
                                colorName="UNKNOWN",
                                textureName="UNKNOWN",
                                variantName="UNKNOWN",
-                               packagingName="UNKNOWN"):
+                               packagingName="UNKNOWN"):  # Creates a Candy Reference for given composition Names
 
     candyID = getCandyByName(candyName)[0][0]
     colorID = colors.getColorByName(colorName)[0][0]

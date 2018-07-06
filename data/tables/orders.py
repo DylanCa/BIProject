@@ -3,7 +3,7 @@ from data.connection import oracle
 import time
 
 
-def getOrderByID(orderID=0):
+def getOrderByID(orderID=0):  # Returns an order for a given order ID as a parameter
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -28,7 +28,7 @@ def getOrderByID(orderID=0):
     return result
 
 
-def getOrderByReferenceID(referenceID=0):
+def getOrderByReferenceID(referenceID=0): # Returns an order for a given reference ID as a parameter
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -54,7 +54,7 @@ def getOrderByReferenceID(referenceID=0):
     return result
 
 
-def getOrdersList():
+def getOrdersList(): # Returns the order list
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -86,7 +86,7 @@ def createOrder(clientName="UNKNOWN",
                 orderState="UNKNOWN",
                 trackingNumber=0000,
                 countryID=0,
-                candyReference=0):
+                candyReference=0): # Creates the order according to the given parameters 
 
     connection = oracle.connectToOracle()
     cursor = connection.cursor()

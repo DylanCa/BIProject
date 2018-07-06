@@ -1,7 +1,7 @@
 from data.connection import oracle
 
 
-def getTextureByID(textureID=0):
+def getTextureByID(textureID=0): # Returns a texture a given texture ID as a parameter
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -16,7 +16,7 @@ def getTextureByID(textureID=0):
     return result
 
 
-def getTextureByName(textureName=""):
+def getTextureByName(textureName=""): # Returns a texture a given texture name as a parameter
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -31,7 +31,7 @@ def getTextureByName(textureName=""):
     return result
 
 
-def getTexturesList():
+def getTexturesList(): # Returns the texture list
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 

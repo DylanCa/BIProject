@@ -1,7 +1,7 @@
 from data.connection import oracle
 
 
-def getVariantByID(variantID=0):
+def getVariantByID(variantID=0):  # Returns a variant a given variant ID as a parameter
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -16,7 +16,7 @@ def getVariantByID(variantID=0):
     return result
 
 
-def getVariantByName(variantName=""):
+def getVariantByName(variantName=""): # Returns a variant a given variant name as a parameter
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -31,7 +31,7 @@ def getVariantByName(variantName=""):
     return result
 
 
-def getVariantsList():
+def getVariantsList():  # Returns the variants list
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 

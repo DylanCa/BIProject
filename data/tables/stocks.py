@@ -2,7 +2,7 @@ from data.connection import oracle
 from data.tables import candies
 
 
-def getStockByID(stockID=0):
+def getStockByID(stockID=0):  # Returns a component stock for a given stock ID as a parameter
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -21,7 +21,7 @@ def getStockByID(stockID=0):
     return
 
 
-def getStockByComponent(component="UNKNOWN"):
+def getStockByComponent(component="UNKNOWN"): # Returns a component stock for a given component name as a parameter
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -38,7 +38,7 @@ def getStockByComponent(component="UNKNOWN"):
     return result
 
 
-def getStocksList():
+def getStocksList(): # Returns the stock list
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
 
@@ -54,7 +54,7 @@ def getStocksList():
     return result
 
 
-def updateStockQuantityByCandyName(candyName="UNKNOWN", totalQuantity=0):
+def updateStockQuantityByCandyName(candyName="UNKNOWN", totalQuantity=0): # Updates the stock quantity according to a given candy composition * total quantity required given as a parameter
 
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
