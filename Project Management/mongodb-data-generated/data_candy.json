@@ -2,7 +2,7 @@
     "Candy_made_per_day": 1197149,
     "Candy_sold_per_day": 768377,
     "Day": "2018-5-13",
-    "Satchel_sold_per_day": 65442,
+    "Sample_sold_per_day": 65442,
     "Box_sold_per_day": 143456,
     "Bag_sold_per_day": 143523
   },
@@ -10,7 +10,7 @@
     "Candy_made_per_day": 1142789,
     "Candy_sold_per_day": 723499,
     "Day": "2018-3-2",
-    "Satchel_sold_per_day": 64911,
+    "Sample_sold_per_day": 64911,
     "Box_sold_per_day": 125787,
     "Bag_sold_per_day": 138517
   },
@@ -18,7 +18,7 @@
     "Candy_made_per_day": 1053774,
     "Candy_sold_per_day": 731328,
     "Day": "2018-3-16",
-    "Satchel_sold_per_day": 61647,
+    "Sample_sold_per_day": 61647,
     "Box_sold_per_day": 146680,
     "Bag_sold_per_day": 101623
   },
@@ -26,7 +26,7 @@
     "Candy_made_per_day": 1019217,
     "Candy_sold_per_day": 804228,
     "Day": "2017-3-9",
-    "Satchel_sold_per_day": 61625,
+    "Sample_sold_per_day": 61625,
     "Box_sold_per_day": 138342,
     "Bag_sold_per_day": 132489
   },
@@ -34,7 +34,7 @@
     "Candy_made_per_day": 1079865,
     "Candy_sold_per_day": 952604,
     "Day": "2018-3-5",
-    "Satchel_sold_per_day": 61845,
+    "Sample_sold_per_day": 61845,
     "Box_sold_per_day": 102187,
     "Bag_sold_per_day": 127601
   }
