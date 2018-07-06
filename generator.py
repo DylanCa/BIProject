@@ -17,8 +17,6 @@ def generateOrderPool(nbOrders=0):
         variantName = random.choice(variants.getVariantsList())[0]
         packagingName = random.choice(["Sample", "Box", "Bag"])
 
-        print(clientName, clientSurname, clientMail, quantity, countryName,
-              candyName, colorName, textureName, variantName, packagingName)
         generateOrder(
             clientName=clientName,
             clientSurname=clientSurname,
@@ -76,6 +74,6 @@ def generateOrder(clientName="UNKNOWN",
         countryID=countryID,
         candyReference=candyReferenceID)
 
-    stocks.updateStockQuantityByCandyName(candyName)
+    stocks.updateStockQuantityByCandyName(candyName, quantity)
 
     return True
