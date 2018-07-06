@@ -90,8 +90,6 @@ def createOrder(clientName="UNKNOWN",
 
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
-    print(clientName, clientSurname, clientMail, quantity, totalCost,
-          orderState, trackingNumber, countryID, candyReference)
           
     cursor.execute(
         """
