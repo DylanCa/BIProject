@@ -1,57 +1,26 @@
 # Data Project - Business Intelligence
 
-One Paragraph of project description goes here
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+This Database / Business Intelligence project, called "Le Palais du Bonbon", aimed at setting up a database hierarchy, developing a candy order generator, optimizing the production of candies and packages, optimizing the package chain of candies, and optimize the delivery of these.
 
 ## Built With
 
+* [Python](https://www.python.org/) - Programming Language.
 * [JMerise](http://www.jfreesoft.com/JMerise/) - To Build Data-related docs
-* [Oracle](https://www.oracle.com/database/technologies/index.html) - Multi-model database management system produced and marketed by Oracle Corporation.
+* [Oracle](https://www.oracle.com/database/technologies/index.html) - Multi-model database management system
 * [Talend](https://www.talend.com/) - A Cloud Data Integration Leader (modern ETL)
 
+* [Microsoft Project](https://products.office.com/en/project/project-and-portfolio-management-software) - to helps us execute projects with ease.
 ## Versioning
 
 We use [GitHub](https://github.com/) for versioning. For the various branches available, see the arrow above.
 
 ## Authors
 
-* **Dylan C** - *Project Manager*
-* **Anthony L**
-* **Anais B**
-* **Cédric M**
+* **Dylan C** - [GitHub Link](https://github.com/DylanCa) *Project Manager*
+* **Anthony L** - [GitHub Link](https://github.com/AnthonyLuque)
+* **Anais B** - [GitHub Link](https://github.com/BAnais)
+* **Cédric M** - [GitHub Link](https://github.com/Cedric-M)
 
 ## License
 
