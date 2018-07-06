@@ -54,7 +54,7 @@ def getStocksList():
     return result
 
 
-def updateStockQuantityByCandyName(candyName="UNKNOWN"):
+def updateStockQuantityByCandyName(candyName="UNKNOWN", totalQuantity=0):
 
     connection = oracle.connectToOracle()
     cursor = connection.cursor()
@@ -62,27 +62,14 @@ def updateStockQuantityByCandyName(candyName="UNKNOWN"):
     results = candies.getCandyByName(candyName)[0]
 
     quantities = [results[2], results[3], results[4], results[5], results[6]]
-
+    
     component = ['additive', 'coating', 'aroma', 'gelling', 'sugar']
 
     for x in range(0, len(component)):
         query = """UPDATE STOCK
             SET PALETTEG = ( SELECT PALETTEG FROM STOCK WHERE COMPONENT = '{}') - {}
-            WHERE COMPONENT = '{}'""".format(component[x], quantities[x],
+            WHERE COMPONENT = '{}'""".format(component[x], quantities[x] * totalQuantity,
                                              component[x])
 
         cursor.execute(query)
         connection.commit()
-
-
-def updateStockQuantityByID(stockID=0, quantity=0):
-
-    connection = oracle.connectToOracle()
-    cursor = connection.cursor()
-
-    query = """UPDATE STOCK
-        SET PALETTEG = ( SELECT PALETTEG FROM STOCK WHERE STOCK_ID = '{}') - {}
-        WHERE STOCK_ID = '{}'""".format(stockID, quantity, stockID)
-    cursor.execute(query)
-
-    connection.commit()
